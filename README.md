@@ -33,8 +33,8 @@ Yummy integrates a robust admin panel dashboard to manage users easily, orders, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Maahmoud-Elsayed/Yummy-online-food.git
-   cd Yummy-online-food
+   git clone https://github.com/Maahmoud-Elsayed/online-food-ordering.git
+   cd online-food-ordering
 
    ```
 
