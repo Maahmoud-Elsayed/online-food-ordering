@@ -38,13 +38,16 @@ export const useFilter = <T>(
   }, [paramValue]);
 
   useEffect(() => {
+    const updatedParams = new URLSearchParams(searchParams.toString());
+    updatedParams.delete("page");
+
     if (Array.isArray(debouncedValue)) {
       if (debouncedValue.length > 0) {
         router[route](
           pathname +
             "?" +
             createQueryString(
-              searchParams,
+              updatedParams,
               filterName,
               debouncedValue.join("_"),
             ),
@@ -52,7 +55,7 @@ export const useFilter = <T>(
         );
       } else {
         router[route](
-          pathname + "?" + removeQueryString(searchParams, filterName),
+          pathname + "?" + removeQueryString(updatedParams, filterName),
           { scroll: false },
         );
       }
@@ -68,7 +71,7 @@ export const useFilter = <T>(
           pathname +
             "?" +
             createQueryString(
-              searchParams,
+              updatedParams,
               filterName,
               debouncedValue.toString().trim().replace(/\s+/g, " "),
             ),
@@ -76,7 +79,7 @@ export const useFilter = <T>(
         );
       } else {
         router[route](
-          pathname + "?" + removeQueryString(searchParams, filterName),
+          pathname + "?" + removeQueryString(updatedParams, filterName),
           { scroll: false },
         );
       }
